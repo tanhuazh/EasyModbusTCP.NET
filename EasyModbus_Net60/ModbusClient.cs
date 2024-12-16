@@ -28,7 +28,6 @@ using System.IO.Ports;
 using System.Reflection;
 using System.Text;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace EasyModbus
 {
@@ -942,12 +941,11 @@ namespace EasyModbus
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
 
-                SpinWait sw_delay = new SpinWait();
+
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
-                    while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();  
-						  
+                	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+                    	System.Threading.Thread.Sleep(1);       
                 	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
@@ -1137,13 +1135,10 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
-                    while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-						
+                	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
+                    	System.Threading.Thread.Sleep(1);  
                 	data = new byte[2100];
           
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
@@ -1331,14 +1326,11 @@ namespace EasyModbus
                 
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                    	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	
                 	receivedUnitIdentifier = data[6];
@@ -1536,14 +1528,12 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
+                
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                    	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
                 }
@@ -1739,14 +1729,11 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                    	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
                 }
@@ -1921,14 +1908,11 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                    	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
                 }
@@ -2120,14 +2104,11 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                    	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
                 }
@@ -2308,14 +2289,11 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                    	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
                 }
@@ -2514,14 +2492,11 @@ namespace EasyModbus
                 readBuffer = new byte[256];
                 DateTime dateTimeSend = DateTime.Now;
                 byte receivedUnitIdentifier = 0xFF;
-
-                SpinWait sw_delay = new SpinWait();
                 while (receivedUnitIdentifier != this.unitIdentifier & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
                 {
                 	while (dataReceived == false & !((DateTime.Now.Ticks - dateTimeSend.Ticks) > TimeSpan.TicksPerMillisecond * this.connectTimeout))
-                        sw_delay.SpinOnce();
-
-                    data = new byte[2100];
+                   	 	System.Threading.Thread.Sleep(1);  
+                	data = new byte[2100];
                 	Array.Copy(readBuffer, 0, data, 6, readBuffer.Length);
                 	receivedUnitIdentifier = data[6];
                 }
